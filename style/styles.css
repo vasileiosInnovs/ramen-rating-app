@@ -58,30 +58,25 @@ div.image {
     padding: 30px;
 }
 
-form div {
-    padding: 5px;
-}
-
-label {
+label, input, textarea, form div div {
     display: block;
-}
-
-input, textarea {
     width: 300px;
     margin: 0;
     text-align: left;
-    vertical-align: top;
+    padding: 3px;
 }
 
 #form-title {
+    margin-bottom: 3px;
     background-color: black;
     color: #f0f0f0;
     text-align: center;
+    padding: 4px;
 }
 
 button {
-    margin-top: 5px;
-    margin-left: 8px;
+    margin-top: 8px;
+    margin-left: 3px;
     padding: 8px;
     background-color: black;
     color: white;
@@ -89,3 +84,4 @@ button {
     width: 300px;
     cursor: pointer;
 }
+
