@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+}
+
+header {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+
+.images {
+    display: flex;
+    gap: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    /* border: 5px solid black; */
+    justify-content: center;
+}
