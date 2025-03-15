@@ -46,9 +46,16 @@ div.image {
 }
 
 .placeholder {
-    display: flex;
-    justify-content: center;
+    display: block;
+    width: 300px;
+    text-align: center;
+    margin: 0 auto;
     margin-bottom: 25px;
+}
+
+.title {
+    padding: 2px;
+    font-weight: bold;
 }
 
 #form {
@@ -64,6 +71,10 @@ label, input, textarea, form div div {
     margin: 0;
     text-align: left;
     padding: 3px;
+}
+
+input:active textarea:active {
+    border-color: black;
 }
 
 #form-title {
@@ -85,3 +96,11 @@ button {
     cursor: pointer;
 }
 
+button:hover {
+    color: black;
+    background-color: rgb(157, 156, 156);
+}
+
+button:active {
+    border-color: white;
+}
