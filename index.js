@@ -54,7 +54,7 @@ displayRamens();
 
 function handleClick(ramen) {
     // Get the image element
-    const ramenImg = document.getElementById("ramen-menu");
+    const ramenImg = document.getElementById("image");
 
     ramenImg.src = ramen ? `images/${ramen.image}` : 'images/Insert-Image-Here.png'; 
     ramenImg.alt = ramen ? ramen.name : 'Placeholder image';
@@ -72,3 +72,31 @@ function handleClick(ramen) {
     ramenComment.textContent = ramen?.comment || 'Insert comment here';
 }
 
+function addSubmitListener() {
+    document.getElementById("form").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const restaurant = document.getElementById("restaurant").value;
+        const image = document.getElementById("image").value;
+        const rating = document.getElementById("rating").value;
+        const comment = document.getElementById("message").value;
+
+
+
+        const newRamen = {
+            id: ramens.length + 1, 
+            name,
+            restaurant,
+            image,
+            rating: rating ? parseInt(rating) : null,
+            comment: comment || ""
+        };
+
+        ramens.push(newRamen);
+
+        addRamenToMenu(newRamen);
+
+        document.getElementById("form").reset();
+    });
+}
