@@ -19,13 +19,17 @@ const ramens = [
         id: 3, 
         name: "Tonkotsu Ramen", 
         restaurant: "Ramen-ya", 
-        image: "tonkotsu.jpg" 
+        image: "tonkotsu.jpg",
+        rating: 8, 
+        comment: "Totemo oishikute utsukushī"
     },
     { 
         id: 4, 
         name: "Naruto Ramen", 
         restaurant: "Ramen-ya", 
-        image: "naruto.jpg" 
+        image: "naruto.jpg",
+        rating: 2, 
+        comment: "Not so good"
     }
  ];
 
@@ -42,6 +46,8 @@ function displayRamens() {
         img.height = 250;
         img.id = ramen.id;
 
+        img.addEventListener("click", () => handleClick(ramen));
+
         const div = document.createElement("div");
         div.classList.add("image");
         div.appendChild(img);
@@ -50,20 +56,18 @@ function displayRamens() {
     });
 }
 
-displayRamens();
-
 function handleClick(ramen) {
     // Get the image element
-    const ramenImg = document.getElementById("image");
+    const ramenImg = document.getElementById("ramen-img");
 
-    ramenImg.src = ramen ? `images/${ramen.image}` : 'images/Insert-Image-Here.png'; 
+    ramenImg.src = ramen.image.startsWith("http") ? ramen.name : `images/${ramen.image}`;
     ramenImg.alt = ramen ? ramen.name : 'Placeholder image';
 
     const ramenName = document.getElementById("ramen-name");
     const ramenRestaurant = document.getElementById("ramen-restaurant");
 
-    ramenName.textContent = ramen?.name || 'Insert name here';
-    ramenRestaurant.textContent = ramen?.restaurant || 'Insert restaurant here';
+    ramenName.textContent = ramen ?.name || 'Insert name here';
+    ramenRestaurant.textContent = ramen ?.restaurant || 'Insert restaurant here';
 
     const ramenRating = document.getElementById("ramen-rating");
     const ramenComment = document.getElementById("ramen-comment");
@@ -73,8 +77,9 @@ function handleClick(ramen) {
 }
 
 function addSubmitListener() {
-    document.getElementById("form").addEventListener("submit", function (event) {
+    document.getElementById("form-button").addEventListener("click", function (event) {
         event.preventDefault();
+        console.log("Form submitted!");
 
         const name = document.getElementById("name").value;
         const restaurant = document.getElementById("restaurant").value;
@@ -95,8 +100,34 @@ function addSubmitListener() {
 
         ramens.push(newRamen);
 
-        addRamenToMenu(newRamen);
+        addedRamen(newRamen);
 
-        document.getElementById("form").reset();
+        event.target.reset();
     });
 }
+
+function addedRamen(ramen) {
+    const ramenMenu = document.getElementById("ramen-menu");
+
+    const img = document.createElement("img");
+    img.src = ramen.image;
+    img.alt = ramen.name;
+    img.width = 250;
+    img.height = 250;
+    img.id = ramen.id;
+
+    img.addEventListener("click", () => handleClick(ramen));
+
+    const div = document.createElement("div");
+    div.classList.add("image");
+    div.appendChild(img);
+
+    ramenMenu.appendChild(div);
+}
+
+function main () {
+    displayRamens()
+    addSubmitListener()
+}
+
+main();
