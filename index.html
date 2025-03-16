@@ -19,15 +19,22 @@
     </div>
 
     <!-- create an image placeholder that will fill image when clicked on-->
-    <div class="placeholder">
-    <div class="image-container" id="image-placeholder">
-        <span>Image goes here</span>
+  <div id="ramen-detail">
+    <div class="placeholder-container" id="image-placeholder">
+      <img id="ramen-img" src="" alt="insert image">
+      <div class="overlay">
+          <h2 id="ramen-name"></h2>
+          <h3 id="ramen-restaurant"></h3>
+      </div>
     </div>
-      <div class="title">Rating:</div>
-      <div>Insert rating here  /10</div>
-      <div class="title">Comment:</div>
-      <div>Insert comment here</div>
+  
+    <div class="ramen-details">
+      <p class="title">Rating:</p>
+      <p id="ramen-rating"></p>
+      <p class="title">Comment:</p>
+      <p id="ramen-comment"></p>
     </div>
+  </div>
 
     <!-- create a form that will fill in new types of ramen -->
      <div id="form">
@@ -38,7 +45,6 @@
             <input
               type="text"
               name="name"
-              id="name"
               autocomplete="on"
               required
               autofocus
@@ -49,7 +55,6 @@
             <input
               type="text"
               name="restaurant"
-              id="restaurant"
               autocomplete="on"
               required
               autofocus
@@ -60,7 +65,6 @@
             <input
               type="text"
               name="image"
-              id="ramen-image"
               required
               autofocus
             />
@@ -70,7 +74,6 @@
             <input
               type="number"
               name="rating"
-              id="rating"
               min="0"
               max="10"
               step="1"
