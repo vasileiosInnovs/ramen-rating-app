@@ -109,7 +109,7 @@ function addSubmitListener() {
 
         addedRamen(newRamen);
 
-        event.target.reset();
+        document.getElementById("form").reset();
     });
 }
 
@@ -124,7 +124,7 @@ function addedRamen(ramen) {
     img.id = ramen.id;
 
     if (!ramen.image || ramen.image.trim() === "") {
-        img.src = 'images/chopsticks.png'; 
+        img.src = 'images/chopsticks.png';
     } else if (ramen.image.startsWith("http")) {
         img.src = ramen.image;
     } else {
