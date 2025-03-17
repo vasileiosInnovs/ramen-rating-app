@@ -63,8 +63,6 @@ function handleClick(ramen) {
     if (ramenImg.src !== `images/${ramen.image}`) {
         if (ramen.image.startsWith("http")) {
             ramenImg.src = ramen.image;
-        } else if (!ramenImg.src){
-            ramenImg.src = 'images/chopsticks.png';
         }
          else {
             ramenImg.src = `images/${ramen.image}`;
@@ -89,7 +87,6 @@ function handleClick(ramen) {
 function addSubmitListener() {
     document.getElementById("form-button").addEventListener("click", function (event) {
         event.preventDefault();
-        console.log("Form submitted!");
 
         const name = document.getElementById("name").value;
         const restaurant = document.getElementById("restaurant").value;
@@ -125,6 +122,14 @@ function addedRamen(ramen) {
     img.width = 250;
     img.height = 250;
     img.id = ramen.id;
+
+    if (!ramen.image || ramen.image.trim() === "") {
+        img.src = 'images/chopsticks.png'; 
+    } else if (ramen.image.startsWith("http")) {
+        img.src = ramen.image;
+    } else {
+        img.src = `images/${ramen.image}`; 
+    }
 
     img.addEventListener("click", () => handleClick(ramen));
 
