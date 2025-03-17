@@ -60,7 +60,16 @@ function handleClick(ramen) {
     // Get the image element
     const ramenImg = document.getElementById("ramen-img");
 
-    ramenImg.src = ramen.image.startsWith("http") ? ramen.name : `images/${ramen.image}`;
+    if (ramenImg.src !== `images/${ramen.image}`) {
+        if (ramen.image.startsWith("http")) {
+            ramenImg.src = ramen.image;
+        } else if (!ramenImg.src){
+            ramenImg.src = 'images/chopsticks.png';
+        }
+         else {
+            ramenImg.src = `images/${ramen.image}`;
+        }
+    
     ramenImg.alt = ramen ? ramen.name : 'Placeholder image';
 
     const ramenName = document.getElementById("ramen-name");
@@ -74,6 +83,7 @@ function handleClick(ramen) {
 
     ramenRating.textContent = ramen?.rating ? `${ramen.rating}/10` : 'Set your rating  /10';
     ramenComment.textContent = ramen?.comment || 'Insert comment here';
+}
 }
 
 function addSubmitListener() {
